@@ -1,0 +1,27 @@
+### Create User
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+    "name": "Karan Luthra", 
+    "email": "theKaranLuthra@prisma.io"
+}
+
+
+### Create Post
+POST http://localhost:3000/api/posts
+Content-Type: application/json
+
+{
+    "title": "Blessed", 
+    "content": "Getting runs in crucial time is blessing from Waheguru🙌🙏"
+}
+
+### Fetch Posts
+GET http://localhost:3000/api/posts/fetch
+Content-Type: application/json
+
+
+### Fetch Users
+GET http://localhost:3000/api/users/fetch
+Content-Type: application/json
