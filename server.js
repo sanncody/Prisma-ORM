@@ -36,7 +36,7 @@ app.post('/api/posts', async (req, res) => {
         data: {
             title,
             content,
-            authorId: 5
+            authorId: 6
         }
     });
 
@@ -44,10 +44,14 @@ app.post('/api/posts', async (req, res) => {
 });
 
 app.get('/api/posts/fetch', async (req, res) => {
+    const { skip, take } = req.query;
+
     const posts = await prisma.post.findMany({
         include: {
             author: true
-        }
+        },
+        skip: JSON.parse(skip),
+        take: JSON.parse(take)
     });
 
     return res.status(200).json(posts);
