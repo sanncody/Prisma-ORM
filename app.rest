@@ -3,8 +3,9 @@ POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-    "name": "Karan Luthra", 
-    "email": "theKaranLuthra@prisma.io"
+    "name": "Sann", 
+    "email": "sann@prisma.io",
+    "bio": "Loves Coding in JS"
 }
 
 
@@ -24,4 +25,9 @@ Content-Type: application/json
 
 ### Fetch Users
 GET http://localhost:3000/api/users/fetch
+Content-Type: application/json
+
+
+### Fetch Profiles
+GET http://localhost:3000/api/profiles/fetch
 Content-Type: application/json

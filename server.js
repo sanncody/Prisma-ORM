@@ -12,12 +12,17 @@ app.get('/test', (req, res) => {
 });
 
 app.post('/api/users', async (req, res) => {
-    const { name, email } = req.body;
+    const { name, email, bio } = req.body;
 
     const user = await prisma.user.create({
         data: {
             name,
-            email
+            email,
+            profile: {
+                create: {
+                    bio
+                }
+            }
         }
     });
 
@@ -51,11 +56,22 @@ app.get('/api/posts/fetch', async (req, res) => {
 app.get('/api/users/fetch', async (req, res) => {
     const users = await prisma.user.findMany({
         include: {
-            posts: true
+            posts: true,
+            profile: true
         }
     });
 
     return res.status(200).json(users);
+});
+
+app.get('/api/profiles/fetch', async (req, res) => {
+    const profiles = await prisma.profile.findMany({
+        include: {
+            user: true
+        }
+    });
+
+    return res.status(200).json(profiles);
 });
 
 const PORT = 3000;
